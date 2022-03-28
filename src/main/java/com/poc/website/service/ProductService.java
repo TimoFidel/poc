@@ -16,8 +16,6 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-	@Autowired
-	VendorRepository vendorRepository;
 	
 	public Product getProductById(long id) {
 		return productRepository.getById(id);
@@ -33,11 +31,15 @@ public class ProductService {
 	public List<Product> getAllProduct(){
 		return productRepository.findAll();
 	}
-	public Product addProduct(long id, Product product) {
-		Vendor vendor= vendorRepository.getById(id);
-		product.setVendor(vendor);
-		return productRepository.save(product);
+	public Product updateProduct(long id, Product product) {
+		Product tempProduct=productRepository.getById(id);
+		tempProduct.setModelName(product.getModelName());
+		tempProduct.setDriveSize(product.getDriveSize());
+		tempProduct.setOs(product.getOs());
+		tempProduct.setRam(product.getRam());
+		tempProduct.setStockAvailable(product.getStockAvailable());
+		tempProduct.setVendor(product.getVendor());
+		return productRepository.save(tempProduct);
 	}
-	
 
 }

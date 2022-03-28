@@ -18,7 +18,7 @@ import com.poc.website.model.Product;
 import com.poc.website.model.Vendor;
 import com.poc.website.service.VendorService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/vendor")
 public class VendorController {
@@ -49,6 +49,10 @@ public class VendorController {
 	@GetMapping("/allVendor")
 	public List<Vendor> getAllVendor() {
 		return vendorService.getAllVendors();
+	}
+	@PostMapping("/updateVendor/{id}")
+	public Vendor updateVendor(@RequestBody Vendor vendor, @PathVariable long id) {
+		return vendorService.updateVendor(id, vendor);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.poc.website.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -42,7 +43,6 @@ public class VendorService {
 	
 	public Vendor updateVendor(long id, Vendor vendor) {
 		Vendor tempVendor= vendorRepository.getById(id);
-		tempVendor.setProduct(vendor.getProduct());
 		tempVendor.setAddress(vendor.getAddress());
 		tempVendor.setContactNumebr(vendor.getContactNumebr());
 		tempVendor.setVendorName(vendor.getVendorName());
@@ -53,6 +53,7 @@ public class VendorService {
 	public List<Vendor> getAllVendors(){
 		return vendorRepository.findAll();
 	}
+	
 	
 
 }

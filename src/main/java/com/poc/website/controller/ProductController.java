@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poc.website.model.Product;
 import com.poc.website.service.ProductService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/product")
 public class ProductController {
@@ -40,9 +40,9 @@ public class ProductController {
 	public List<Product> getAllProduct(){
 		return productService.getAllProduct();
 	}
-	@PostMapping("/addProduct/{id}")
-	public Product addProduct(@PathVariable long id,@RequestBody Product product) {
-		return productService.addProduct(id, product);
+	@PostMapping("/updateProduct/{id}")
+	public Product updateProduct(@RequestBody Product product,@PathVariable long id) {
+		return productService.updateProduct(id, product);
 	}
 	
 
