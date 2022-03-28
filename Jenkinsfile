@@ -22,6 +22,13 @@ pipeline {
                 sh 'docker build -t  vaztimofidel/docker_springboot:latest .'
             }
         }
+        stage('Docker Login'){
+            
+            steps {
+                 
+                 sh "docker login -u vaztimofidel -p Timorihi$-99"
+            }                
+        }
 
 
         stage('Docker Push'){
